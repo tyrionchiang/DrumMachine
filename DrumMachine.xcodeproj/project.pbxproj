@@ -11,19 +11,20 @@
 		863127D61D0F9A0100C92066 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863127D51D0F9A0100C92066 /* RecordingViewController.swift */; };
 		863127D81D0F9A1A00C92066 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863127D71D0F9A1A00C92066 /* SettingViewController.swift */; };
 		863127DA1D0F9A2B00C92066 /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863127D91D0F9A2B00C92066 /* BPMViewController.swift */; };
+		864690A11D2372DB00ECA2AF /* Radicalo - I will kill you all.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 864690A01D2372DB00ECA2AF /* Radicalo - I will kill you all.mp3 */; };
+		866D31711D22C23B00165249 /* MetronomeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866D31701D22C23B00165249 /* MetronomeEngine.swift */; };
+		866D317C1D22C83300165249 /* BassDrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 866D31751D22C83300165249 /* BassDrum.wav */; };
+		866D317D1D22C83300165249 /* Crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 866D31761D22C83300165249 /* Crash.wav */; };
+		866D317E1D22C83300165249 /* FloorTom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 866D31771D22C83300165249 /* FloorTom.wav */; };
+		866D317F1D22C83300165249 /* HighTom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 866D31781D22C83300165249 /* HighTom.wav */; };
+		866D31801D22C83300165249 /* HiHatsClose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 866D31791D22C83300165249 /* HiHatsClose.wav */; };
+		866D31811D22C83300165249 /* Ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = 866D317A1D22C83300165249 /* Ride.wav */; };
+		866D31821D22C83300165249 /* Snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 866D317B1D22C83300165249 /* Snare.wav */; };
 		86A340D01D0EE17000ADD60C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A340CF1D0EE17000ADD60C /* AppDelegate.swift */; };
 		86A340D21D0EE17000ADD60C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A340D11D0EE17000ADD60C /* MainViewController.swift */; };
 		86A340D51D0EE17000ADD60C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A340D31D0EE17000ADD60C /* Main.storyboard */; };
 		86A340D71D0EE17000ADD60C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A340D61D0EE17000ADD60C /* Assets.xcassets */; };
 		86A340DA1D0EE17000ADD60C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A340D81D0EE17000ADD60C /* LaunchScreen.storyboard */; };
-		86BA8D401D167641009EC5D3 /* BassDrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D381D167641009EC5D3 /* BassDrum.wav */; };
-		86BA8D411D167641009EC5D3 /* Crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D391D167641009EC5D3 /* Crash.wav */; };
-		86BA8D421D167641009EC5D3 /* FloorTom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D3A1D167641009EC5D3 /* FloorTom.wav */; };
-		86BA8D431D167641009EC5D3 /* HighTom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D3B1D167641009EC5D3 /* HighTom.wav */; };
-		86BA8D441D167641009EC5D3 /* HiHatsClose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D3C1D167641009EC5D3 /* HiHatsClose.wav */; };
-		86BA8D451D167641009EC5D3 /* Radicalo - I will kill you all.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D3D1D167641009EC5D3 /* Radicalo - I will kill you all.mp3 */; };
-		86BA8D461D167641009EC5D3 /* Ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D3E1D167641009EC5D3 /* Ride.wav */; };
-		86BA8D471D167641009EC5D3 /* Snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86BA8D3F1D167641009EC5D3 /* Snare.wav */; };
 		86BA8D4E1D16775D009EC5D3 /* SoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA8D4D1D16775D009EC5D3 /* SoundEngine.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,15 @@
 		863127D51D0F9A0100C92066 /* RecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		863127D71D0F9A1A00C92066 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		863127D91D0F9A2B00C92066 /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
+		864690A01D2372DB00ECA2AF /* Radicalo - I will kill you all.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Radicalo - I will kill you all.mp3"; sourceTree = "<group>"; };
+		866D31701D22C23B00165249 /* MetronomeEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEngine.swift; sourceTree = "<group>"; };
+		866D31751D22C83300165249 /* BassDrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BassDrum.wav; sourceTree = "<group>"; };
+		866D31761D22C83300165249 /* Crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Crash.wav; sourceTree = "<group>"; };
+		866D31771D22C83300165249 /* FloorTom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FloorTom.wav; sourceTree = "<group>"; };
+		866D31781D22C83300165249 /* HighTom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HighTom.wav; sourceTree = "<group>"; };
+		866D31791D22C83300165249 /* HiHatsClose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsClose.wav; sourceTree = "<group>"; };
+		866D317A1D22C83300165249 /* Ride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ride.wav; sourceTree = "<group>"; };
+		866D317B1D22C83300165249 /* Snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Snare.wav; sourceTree = "<group>"; };
 		86A340CC1D0EE17000ADD60C /* DrumMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrumMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A340CF1D0EE17000ADD60C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A340D11D0EE17000ADD60C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -39,14 +49,6 @@
 		86A340D61D0EE17000ADD60C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86A340D91D0EE17000ADD60C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86A340DB1D0EE17000ADD60C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		86BA8D381D167641009EC5D3 /* BassDrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BassDrum.wav; sourceTree = "<group>"; };
-		86BA8D391D167641009EC5D3 /* Crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Crash.wav; sourceTree = "<group>"; };
-		86BA8D3A1D167641009EC5D3 /* FloorTom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FloorTom.wav; sourceTree = "<group>"; };
-		86BA8D3B1D167641009EC5D3 /* HighTom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HighTom.wav; sourceTree = "<group>"; };
-		86BA8D3C1D167641009EC5D3 /* HiHatsClose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsClose.wav; sourceTree = "<group>"; };
-		86BA8D3D1D167641009EC5D3 /* Radicalo - I will kill you all.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Radicalo - I will kill you all.mp3"; sourceTree = "<group>"; };
-		86BA8D3E1D167641009EC5D3 /* Ride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ride.wav; sourceTree = "<group>"; };
-		86BA8D3F1D167641009EC5D3 /* Snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Snare.wav; sourceTree = "<group>"; };
 		86BA8D4D1D16775D009EC5D3 /* SoundEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		866D31741D22C83300165249 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				864690A01D2372DB00ECA2AF /* Radicalo - I will kill you all.mp3 */,
+				866D31751D22C83300165249 /* BassDrum.wav */,
+				866D31761D22C83300165249 /* Crash.wav */,
+				866D31771D22C83300165249 /* FloorTom.wav */,
+				866D31781D22C83300165249 /* HighTom.wav */,
+				866D31791D22C83300165249 /* HiHatsClose.wav */,
+				866D317A1D22C83300165249 /* Ride.wav */,
+				866D317B1D22C83300165249 /* Snare.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		86A340C31D0EE17000ADD60C = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +97,8 @@
 		86A340CE1D0EE17000ADD60C /* DrumMachine */ = {
 			isa = PBXGroup;
 			children = (
+				866D31741D22C83300165249 /* Sounds */,
 				86BA8D481D1676AE009EC5D3 /* Services */,
-				86BA8D371D167641009EC5D3 /* Sounds */,
 				86A340E11D0EE17500ADD60C /* setting */,
 				86A340D11D0EE17000ADD60C /* MainViewController.swift */,
 				86A340D31D0EE17000ADD60C /* Main.storyboard */,
@@ -104,26 +121,11 @@
 			name = setting;
 			sourceTree = "<group>";
 		};
-		86BA8D371D167641009EC5D3 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				86BA8D381D167641009EC5D3 /* BassDrum.wav */,
-				86BA8D391D167641009EC5D3 /* Crash.wav */,
-				86BA8D3A1D167641009EC5D3 /* FloorTom.wav */,
-				86BA8D3B1D167641009EC5D3 /* HighTom.wav */,
-				86BA8D3C1D167641009EC5D3 /* HiHatsClose.wav */,
-				86BA8D3D1D167641009EC5D3 /* Radicalo - I will kill you all.mp3 */,
-				86BA8D3E1D167641009EC5D3 /* Ride.wav */,
-				86BA8D3F1D167641009EC5D3 /* Snare.wav */,
-			);
-			name = Sounds;
-			path = ../../../../../Desktop/Sounds;
-			sourceTree = "<group>";
-		};
 		86BA8D481D1676AE009EC5D3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				86BA8D4D1D16775D009EC5D3 /* SoundEngine.swift */,
+				866D31701D22C23B00165249 /* MetronomeEngine.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -186,17 +188,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86BA8D421D167641009EC5D3 /* FloorTom.wav in Resources */,
-				86BA8D451D167641009EC5D3 /* Radicalo - I will kill you all.mp3 in Resources */,
-				86BA8D411D167641009EC5D3 /* Crash.wav in Resources */,
-				86BA8D441D167641009EC5D3 /* HiHatsClose.wav in Resources */,
+				866D31821D22C83300165249 /* Snare.wav in Resources */,
+				866D317E1D22C83300165249 /* FloorTom.wav in Resources */,
+				866D317D1D22C83300165249 /* Crash.wav in Resources */,
+				866D31801D22C83300165249 /* HiHatsClose.wav in Resources */,
+				864690A11D2372DB00ECA2AF /* Radicalo - I will kill you all.mp3 in Resources */,
 				86A340DA1D0EE17000ADD60C /* LaunchScreen.storyboard in Resources */,
-				86BA8D401D167641009EC5D3 /* BassDrum.wav in Resources */,
-				86BA8D461D167641009EC5D3 /* Ride.wav in Resources */,
+				866D31811D22C83300165249 /* Ride.wav in Resources */,
+				866D317C1D22C83300165249 /* BassDrum.wav in Resources */,
 				86A340D71D0EE17000ADD60C /* Assets.xcassets in Resources */,
 				86A340D51D0EE17000ADD60C /* Main.storyboard in Resources */,
-				86BA8D431D167641009EC5D3 /* HighTom.wav in Resources */,
-				86BA8D471D167641009EC5D3 /* Snare.wav in Resources */,
+				866D317F1D22C83300165249 /* HighTom.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +213,7 @@
 				86BA8D4E1D16775D009EC5D3 /* SoundEngine.swift in Sources */,
 				863127D61D0F9A0100C92066 /* RecordingViewController.swift in Sources */,
 				86A340D21D0EE17000ADD60C /* MainViewController.swift in Sources */,
+				866D31711D22C23B00165249 /* MetronomeEngine.swift in Sources */,
 				86A340D01D0EE17000ADD60C /* AppDelegate.swift in Sources */,
 				863127DA1D0F9A2B00C92066 /* BPMViewController.swift in Sources */,
 				863127D41D0F99B300C92066 /* GrooveNotesViewController.swift in Sources */,

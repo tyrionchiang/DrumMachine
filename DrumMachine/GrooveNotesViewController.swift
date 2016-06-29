@@ -12,18 +12,53 @@ class GrooveNotesViewController: UIViewController {
 
     
     var channelNumber: Int = 0
+    
+    //======================================
+    //TODO : notes has to be replaced by notes in metronome engine
+    var notes : [Bool]? = [true,false,false,false,
+                          false,false,false,false,
+                          true,false,false,false,
+                          false,false,false,false,
+                          ]
+    //======================================
+    
+    @IBOutlet weak var noteButtonsContainerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         print("channelNumber:\(channelNumber)")
+        
+        if let currentNotes = notes{
+            for view in noteButtonsContainerView.subviews{
+                if let button = (view as? UIButton){
+                    if currentNotes[button.tag]{
+                        button.setBackgroundImage(UIImage(named: "cyan_circle"), forState: .Normal)
+                    }else{
+                        button.setBackgroundImage(UIImage(named: "pink_circle"), forState: .Normal)
+                    }
+                }
+            }
+        }
+        
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+ 
 
+    @IBAction func noteButtonHasBeenClicked(sender: UIButton) {
+        if let currentNotes = notes{
+            //let clicked =
+            notes![sender.tag] = !currentNotes[sender.tag]
+            if notes![sender.tag]{
+                sender.setBackgroundImage(UIImage(named: "cyan_circle"), forState: .Normal)
+            }else{
+                sender.setBackgroundImage(UIImage(named: "pink_circle"), forState: .Normal)
+            }
+        }
+
+    }
     
     // MARK: - Navigation
 
@@ -34,6 +69,10 @@ class GrooveNotesViewController: UIViewController {
         
         //print("GrooveNotesViewController")
         
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
 

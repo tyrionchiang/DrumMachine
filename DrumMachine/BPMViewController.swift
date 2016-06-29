@@ -10,29 +10,20 @@ import UIKit
 
 class BPMViewController: UIViewController {
     
-    let maxBPMvalue = 250
-    let minBPNvalue = 30
-    //var BPMvalue = 70
-    
-    var _BPMvalue = 70
+    var metronomeEngine: MetronomeEngine?
+
+    //computed properties
     var BPMvalue: Int{
-        set(newValue){
-            /*if newValue > maxBPMvalue{
-                _BPMvalue = maxBPMvalue
-            }else if newValue < minBPNvalue{
-                _BPMvalue = minBPNvalue
-            }else{
-                _BPMvalue = newValue
-            }*/
-            _BPMvalue = min(max(newValue, minBPNvalue), maxBPMvalue)
-            BPMvalueLabel.text = String(_BPMvalue)
-            
-            NSUserDefaults.standardUserDefaults().setObject(_BPMvalue, forKey: "BPMvalue")
-            NSUserDefaults.standardUserDefaults().synchronize()
+        set{
+            if let engine = metronomeEngine{
+                engine.BPMValue = newValue
+                BPMvalueLabel.text = String(engine.BPMValue)
+            }
         }
         get{
-            return _BPMvalue
+            return metronomeEngine?.BPMValue ?? 0
         }
+    
     }
     
     @IBOutlet weak var BPMSubPanelView: UIView!
@@ -41,8 +32,8 @@ class BPMViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BPMvalue = NSUserDefaults.standardUserDefaults().objectForKey("BPMvalue") as? Int ?? _BPMvalue
-        
+        BPMvalueLabel.text = String(BPMvalue)
+
     }
 
    

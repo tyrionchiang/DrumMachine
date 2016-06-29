@@ -15,6 +15,8 @@ class MainViewController: UIViewController{
     
     //create soundEngine
     let soundEngine = SoundEngine()
+    let metronomeEngine = MetronomeEngine()
+
     let defaultBPMvalue = 70
     var playSoundTimer: NSTimer?
     
@@ -22,6 +24,7 @@ class MainViewController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        metronomeEngine.soundEngine = soundEngine
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -30,30 +33,17 @@ class MainViewController: UIViewController{
     
     
     
-    func playSound() {
-        
-        //play sound
-        if let player = soundEngine.snarePlayer{
-            player.currentTime = 0.0
-            player.play()
-        }
-    }
+
     
     @IBAction func playSoundButtonHasBeenClicked(sender: UIButton) {
-        if let timer = playSoundTimer{
-            //stop
-            timer.invalidate()
-            playSoundTimer = nil
-            playSoundButton.setTitle("Play", forState: .Normal)
+        if metronomeEngine.isPlaying(){
+            metronomeEngine.stopPlay()
+            playSoundButton.setTitle("play", forState: .Normal)
         }else{
-            //play
-            
-            let BPMvalue = NSUserDefaults.standardUserDefaults().objectForKey("BPMvalue") as? Int ?? defaultBPMvalue
-            let timeInterval = 60.0 / Double(BPMvalue) * (4/16)
-            print(timeInterval)
-            playSoundTimer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: #selector(MainViewController.playSound), userInfo: nil, repeats: true)
-            playSoundButton.setTitle("Stop", forState: .Normal)
+            metronomeEngine.startPlay()
+            playSoundButton.setTitle("stop", forState: .Normal)
         }
+        
     }
     
     
@@ -83,7 +73,8 @@ class MainViewController: UIViewController{
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 4
             case "notesChannel5":
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 5
-                
+            case "BPMController":
+                (segue.destinationViewController as? BPMViewController)?.metronomeEngine = metronomeEngine
             default:
                 break;
             }
