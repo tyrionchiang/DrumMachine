@@ -10,12 +10,46 @@ import UIKit
 
 class RecordingViewController: UIViewController {
 
+    
+    @IBOutlet weak var recordingButton: UIButton!    
+    @IBOutlet weak var lodingIndicator: UIActivityIndicatorView!
+    var soundEngine: SoundEngine?
+    var channelNumber: Int = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        lodingIndicator.hidden = true
+        lodingIndicator.startAnimating()
+        
+        soundEngine?.initializeRecorder()
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        soundEngine?.reloadSound()
+    }
+    
 
+    var isRecording = false
+    @IBAction func recordingButtonHasBeenClicked(sender: UIButton) {
+        isRecording = !isRecording
+        if isRecording{
+            //TODO: Start recording
+            soundEngine?.startRecord(channelNumber)
+            
+            sender.setImage(UIImage(named: "stop"), forState: .Normal)
+            lodingIndicator.hidden = false
+        }else{
+            soundEngine?.finishRecording(success: true)
+            
+            sender.setImage(UIImage(named: "play"), forState: .Normal)
+            lodingIndicator.hidden = true
+        }
+    }
    
     override func prefersStatusBarHidden() -> Bool {
         return true

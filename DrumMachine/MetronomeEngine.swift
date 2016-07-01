@@ -13,27 +13,50 @@ class MetronomeEngine: NSObject {
     
     var soundEngine: SoundEngine?
     private var playSoundTimer: NSTimer?
-    private var _BPMValue = 70
+    
+    
+    var notePointsChannels: [[Bool]] = [
+        [false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        ],
+        [false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        ],
+        [false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        ],
+        [false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        ],
+        [false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        ],
+        [false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        false,false,false,false,
+        ],
+    ]{
+        didSet{
+            NSUserDefaults.standardUserDefaults().setObject(notePointsChannels, forKey: "notePointsChannels")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    
     private let maxBPMvalue = 250
     private let minBPNvalue = 30
-    
-    var bassDrumPoints:[Bool] = [true,false,false,false,
-                              false,false,false,false,
-                              true,false,false,false,
-                              false,false,false,false,
-                              ]
-    
-    var snarePoints:[Bool] = [false,false,false,false,
-                              true,false,false,false,
-                              false,false,false,false,
-                              true,false,false,false,
-                              ]
-    
-    var hihatsPoints:[Bool] = [true,false,true,false,
-                               true,false,true,false,
-                               true,false,true,false,
-                               true,false,true,false,
-                               ]
+    private var _BPMValue = 70
     
     var BPMValue: Int{
         set{
@@ -58,6 +81,13 @@ class MetronomeEngine: NSObject {
     
         
         BPMValue = NSUserDefaults.standardUserDefaults().objectForKey("BPMValue") as? Int ?? _BPMValue
+        
+        if let object = NSUserDefaults.standardUserDefaults().objectForKey("notePointsChannels") as? [[Bool]]{
+             notePointsChannels = object
+        }
+        
+       
+
 
     }
     
@@ -68,13 +98,19 @@ class MetronomeEngine: NSObject {
         }else{
             let timeInterval = 60.0 / Double(BPMValue) / 4.0
             
-            playSoundTimer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: #selector(MetronomeEngine.playSound), userInfo: nil, repeats: true)
+            playSoundTimer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: #selector(playSound), userInfo: nil, repeats: true)
         }
     }
     func stopPlay(){
         if let timer = playSoundTimer{
             timer.invalidate()
             playSoundTimer = nil
+            
+            if let engine = soundEngine{
+                for player in engine.playerChannels{
+                    player?.stop()
+                }
+            }
         }
         counter = 0
     }
@@ -83,29 +119,20 @@ class MetronomeEngine: NSObject {
         return playSoundTimer != nil
     }
     
-    func playSound() {
-        if let player = soundEngine?.hiHatsPlayer{
-            if hihatsPoints[counter]{
-                player.currentTime = 0
-                player.play()
+    @objc private func playSound() {
+        for index in 0...(notePointsChannels.count - 1){
+            if let player = soundEngine?.playerChannels[index]{
+                if notePointsChannels[index][counter]{
+                    player.currentTime = 0
+                    player.play()
+                }
             }
         }
-        if let player = soundEngine?.bassDrumPlayer{
-            if bassDrumPoints[counter]{
-                player.currentTime = 0
-                player.play()
-            }
-        }
-        if let player = soundEngine?.snarePlayer{
-            if snarePoints[counter]{
-                player.currentTime = 0
-                player.play()
-            }
-        }
+        
         
         counter++
         
-        if counter >= snarePoints.count{
+        if counter >= notePointsChannels[0].count{
             counter = 0
         }
     }

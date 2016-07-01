@@ -12,15 +12,8 @@ class GrooveNotesViewController: UIViewController {
 
     
     var channelNumber: Int = 0
-    
-    //======================================
-    //TODO : notes has to be replaced by notes in metronome engine
-    var notes : [Bool]? = [true,false,false,false,
-                          false,false,false,false,
-                          true,false,false,false,
-                          false,false,false,false,
-                          ]
-    //======================================
+    var metronomEngine: MetronomeEngine?
+
     
     @IBOutlet weak var noteButtonsContainerView: UIView!
     
@@ -29,8 +22,7 @@ class GrooveNotesViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        print("channelNumber:\(channelNumber)")
-        
+        var notes = metronomEngine?.notePointsChannels[channelNumber]
         if let currentNotes = notes{
             for view in noteButtonsContainerView.subviews{
                 if let button = (view as? UIButton){
@@ -41,6 +33,7 @@ class GrooveNotesViewController: UIViewController {
                     }
                 }
             }
+            metronomEngine?.notePointsChannels[channelNumber] = notes!
         }
         
     }
@@ -48,6 +41,8 @@ class GrooveNotesViewController: UIViewController {
  
 
     @IBAction func noteButtonHasBeenClicked(sender: UIButton) {
+        
+        var notes = metronomEngine?.notePointsChannels[channelNumber]
         if let currentNotes = notes{
             //let clicked =
             notes![sender.tag] = !currentNotes[sender.tag]
@@ -57,7 +52,7 @@ class GrooveNotesViewController: UIViewController {
                 sender.setBackgroundImage(UIImage(named: "pink_circle"), forState: .Normal)
             }
         }
-
+        metronomEngine?.notePointsChannels[channelNumber] = notes!
     }
     
     // MARK: - Navigation

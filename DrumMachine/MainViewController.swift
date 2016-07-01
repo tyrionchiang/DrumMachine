@@ -63,18 +63,28 @@ class MainViewController: UIViewController{
             switch identifier {
             case "notesChannel0":
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 0
+                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel1":
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 1
+                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel2":
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 2
+                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel3":
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 3
+                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel4":
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 4
+                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel5":
                 (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 5
+                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "BPMController":
                 (segue.destinationViewController as? BPMViewController)?.metronomeEngine = metronomeEngine
+            case "SettingController":
+                (segue.destinationViewController as? SettingViewController)?.soundEngine = soundEngine
+                (segue.destinationViewController as? SettingViewController)?.metronomeEngine = metronomeEngine
+
             default:
                 break;
             }
