@@ -19,17 +19,18 @@ class GrooveNotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
         
-        var notes = metronomEngine?.notePointsChannels[channelNumber]
+        let notes = metronomEngine?.notePointsChannels[channelNumber]
         if let currentNotes = notes{
             for view in noteButtonsContainerView.subviews{
                 if let button = (view as? UIButton){
                     if currentNotes[button.tag]{
-                        button.setBackgroundImage(UIImage(named: "cyan_circle"), forState: .Normal)
+                        button.setBackgroundImage(UIImage(named: "cyan_circle"), for: UIControlState())
                     }else{
-                        button.setBackgroundImage(UIImage(named: "pink_circle"), forState: .Normal)
+                        button.setBackgroundImage(UIImage(named: "pink_circle"), for: UIControlState())
                     }
                 }
             }
@@ -40,16 +41,16 @@ class GrooveNotesViewController: UIViewController {
 
  
 
-    @IBAction func noteButtonHasBeenClicked(sender: UIButton) {
+    @IBAction func noteButtonHasBeenClicked(_ sender: UIButton) {
         
         var notes = metronomEngine?.notePointsChannels[channelNumber]
         if let currentNotes = notes{
             //let clicked =
             notes![sender.tag] = !currentNotes[sender.tag]
             if notes![sender.tag]{
-                sender.setBackgroundImage(UIImage(named: "cyan_circle"), forState: .Normal)
+                sender.setBackgroundImage(UIImage(named: "cyan_circle"), for: UIControlState())
             }else{
-                sender.setBackgroundImage(UIImage(named: "pink_circle"), forState: .Normal)
+                sender.setBackgroundImage(UIImage(named: "pink_circle"), for: UIControlState())
             }
         }
         metronomEngine?.notePointsChannels[channelNumber] = notes!
@@ -58,7 +59,7 @@ class GrooveNotesViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
@@ -66,7 +67,7 @@ class GrooveNotesViewController: UIViewController {
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

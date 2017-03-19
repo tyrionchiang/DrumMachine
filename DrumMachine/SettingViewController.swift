@@ -23,7 +23,7 @@ class SettingViewController: UIViewController {
         syncVolumeSliderSet()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if stopPlayByRecording{
@@ -42,28 +42,28 @@ class SettingViewController: UIViewController {
     }
     
     
-    @IBAction func volumeSliderHasBeenChanged(sender: UISlider) {
+    @IBAction func volumeSliderHasBeenChanged(_ sender: UISlider) {
         if let engine = soundEngine{
             engine.channelVolumes[sender.tag] = sender.value
             soundEngine?.channelVolumes = engine.channelVolumes
         }
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
-    @IBAction func unwindForSettingSegue(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindForSettingSegue(_ unwindSegue: UIStoryboardSegue) {
         
     }
     
     var stopPlayByRecording: Bool = false
     
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier{
             switch identifier {
             case "recordingController0":
-                (segue.destinationViewController as? RecordingViewController)?.channelNumber = 4
-                (segue.destinationViewController as? RecordingViewController)?.soundEngine = soundEngine
+                (segue.destination as? RecordingViewController)?.channelNumber = 4
+                (segue.destination as? RecordingViewController)?.soundEngine = soundEngine
                 if let engine = metronomeEngine{
                     if engine.isPlaying(){
                         metronomeEngine?.stopPlay()
@@ -71,8 +71,8 @@ class SettingViewController: UIViewController {
                     }
                 }
             case "recordingController1":
-                (segue.destinationViewController as? RecordingViewController)?.channelNumber = 5
-                (segue.destinationViewController as? RecordingViewController)?.soundEngine = soundEngine
+                (segue.destination as? RecordingViewController)?.channelNumber = 5
+                (segue.destination as? RecordingViewController)?.soundEngine = soundEngine
                 if let engine = metronomeEngine{
                     if engine.isPlaying(){
                         metronomeEngine?.stopPlay()

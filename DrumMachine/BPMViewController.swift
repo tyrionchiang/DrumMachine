@@ -37,33 +37,33 @@ class BPMViewController: UIViewController {
     }
 
    
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
-    @IBAction func increaseBPM(sender: UIButton) {
+    @IBAction func increaseBPM(_ sender: UIButton) {
         BPMvalue += 1
     }
     
-    @IBAction func decreaseBPM(sender: UIButton) {
+    @IBAction func decreaseBPM(_ sender: UIButton) {
         BPMvalue -= 1
     }
     
     
     var startedPositionOfPanGesture : CGPoint!
     let sensitivityOfBPM: CGFloat = 20.0
-    @IBAction func BPMChangedByPanGestuture(sender: UIPanGestureRecognizer) {
+    @IBAction func BPMChangedByPanGestuture(_ sender: UIPanGestureRecognizer) {
         
         
-        if sender.state == UIGestureRecognizerState.Began{
-            startedPositionOfPanGesture = sender.translationInView(self.BPMSubPanelView)
+        if sender.state == UIGestureRecognizerState.began{
+            startedPositionOfPanGesture = sender.translation(in: self.BPMSubPanelView)
         }else{
-            let newPosition = sender.translationInView(self.BPMSubPanelView)
+            let newPosition = sender.translation(in: self.BPMSubPanelView)
             let yDelta = newPosition.y - startedPositionOfPanGesture.y
             
             if abs(yDelta / sensitivityOfBPM) >= 1{
                 BPMvalue -= Int(yDelta / sensitivityOfBPM)
-                startedPositionOfPanGesture = sender.translationInView(self.BPMSubPanelView)
+                startedPositionOfPanGesture = sender.translation(in: self.BPMSubPanelView)
             }
         }
         

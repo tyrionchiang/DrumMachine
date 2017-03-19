@@ -18,7 +18,7 @@ class MainViewController: UIViewController{
     let metronomeEngine = MetronomeEngine()
 
     let defaultBPMvalue = 70
-    var playSoundTimer: NSTimer?
+    var playSoundTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class MainViewController: UIViewController{
         metronomeEngine.soundEngine = soundEngine
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -35,13 +35,13 @@ class MainViewController: UIViewController{
     
 
     
-    @IBAction func playSoundButtonHasBeenClicked(sender: UIButton) {
+    @IBAction func playSoundButtonHasBeenClicked(_ sender: UIButton) {
         if metronomeEngine.isPlaying(){
             metronomeEngine.stopPlay()
-            playSoundButton.setTitle("play", forState: .Normal)
+            playSoundButton.setTitle("play", for: UIControlState())
         }else{
             metronomeEngine.startPlay()
-            playSoundButton.setTitle("stop", forState: .Normal)
+            playSoundButton.setTitle("stop", for: UIControlState())
         }
         
     }
@@ -49,11 +49,11 @@ class MainViewController: UIViewController{
     
 
     
-    @IBAction func unwindForMainSegue(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindForMainSegue(_ unwindSegue: UIStoryboardSegue) {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
@@ -62,28 +62,28 @@ class MainViewController: UIViewController{
         if let identifier = segue.identifier{
             switch identifier {
             case "notesChannel0":
-                (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 0
-                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
+                (segue.destination as? GrooveNotesViewController)?.channelNumber = 0
+                (segue.destination as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel1":
-                (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 1
-                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
+                (segue.destination as? GrooveNotesViewController)?.channelNumber = 1
+                (segue.destination as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel2":
-                (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 2
-                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
+                (segue.destination as? GrooveNotesViewController)?.channelNumber = 2
+                (segue.destination as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel3":
-                (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 3
-                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
+                (segue.destination as? GrooveNotesViewController)?.channelNumber = 3
+                (segue.destination as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel4":
-                (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 4
-                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
+                (segue.destination as? GrooveNotesViewController)?.channelNumber = 4
+                (segue.destination as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "notesChannel5":
-                (segue.destinationViewController as? GrooveNotesViewController)?.channelNumber = 5
-                (segue.destinationViewController as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
+                (segue.destination as? GrooveNotesViewController)?.channelNumber = 5
+                (segue.destination as? GrooveNotesViewController)?.metronomEngine = metronomeEngine
             case "BPMController":
-                (segue.destinationViewController as? BPMViewController)?.metronomeEngine = metronomeEngine
+                (segue.destination as? BPMViewController)?.metronomeEngine = metronomeEngine
             case "SettingController":
-                (segue.destinationViewController as? SettingViewController)?.soundEngine = soundEngine
-                (segue.destinationViewController as? SettingViewController)?.metronomeEngine = metronomeEngine
+                (segue.destination as? SettingViewController)?.soundEngine = soundEngine
+                (segue.destination as? SettingViewController)?.metronomeEngine = metronomeEngine
 
             default:
                 break;

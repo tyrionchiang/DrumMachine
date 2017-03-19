@@ -33,8 +33,8 @@ class SoundEngine: NSObject, AVAudioPlayerDelegate , AVAudioRecorderDelegate {
                 }
             }
             
-            NSUserDefaults.standardUserDefaults().setObject(channelVolumes, forKey: "channelVolumes")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(channelVolumes, forKey: "channelVolumes")
+            UserDefaults.standard.synchronize()
         }
     }
     
@@ -42,7 +42,7 @@ class SoundEngine: NSObject, AVAudioPlayerDelegate , AVAudioRecorderDelegate {
         super.init()
         //do someting....
         
-        if let volums = NSUserDefaults.standardUserDefaults().objectForKey("channelVolumes") as? [Float]{
+        if let volums = UserDefaults.standard.object(forKey: "channelVolumes") as? [Float]{
             channelVolumes = volums
         }
         
@@ -58,17 +58,17 @@ class SoundEngine: NSObject, AVAudioPlayerDelegate , AVAudioRecorderDelegate {
             playerChannels.append(createAVAudioPlayer(channelsFileInfo[index][0], fileType: channelsFileInfo[index][1], volum: channelVolumes[index]))
         }
         
-        let audioURL0 = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]).URLByAppendingPathComponent("\(channelsFileInfo[4][0]).\(channelsFileInfo[4][1])")
+        let audioURL0 = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]).appendingPathComponent("\(channelsFileInfo[4][0]).\(channelsFileInfo[4][1])")
         playerChannels.append(createAVAudioPlayer(audioURL0, volume: channelVolumes[4]))
-        let audioURL1 = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]).URLByAppendingPathComponent("\(channelsFileInfo[5][0]).\(channelsFileInfo[5][1])")
+        let audioURL1 = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]).appendingPathComponent("\(channelsFileInfo[5][0]).\(channelsFileInfo[5][1])")
         playerChannels.append(createAVAudioPlayer(audioURL1, volume: channelVolumes[5]))
     }
     
     
     
-    func createAVAudioPlayer(fileName : String, fileType: String, volum:Float) -> AVAudioPlayer? {
-        if let path = NSBundle.mainBundle().pathForResource(fileName, ofType: fileType){
-            if let file = NSFileManager.defaultManager().contentsAtPath(path){
+    func createAVAudioPlayer(_ fileName : String, fileType: String, volum:Float) -> AVAudioPlayer? {
+        if let path = Bundle.main.path(forResource: fileName, ofType: fileType){
+            if let file = FileManager.default.contents(atPath: path){
                 do{
                     let newPlayer = try AVAudioPlayer(data: file)
                     newPlayer.volume = volum
@@ -86,8 +86,8 @@ class SoundEngine: NSObject, AVAudioPlayerDelegate , AVAudioRecorderDelegate {
         return nil
     }
     
-    func createAVAudioPlayer(path: NSURL, volume: Float) -> AVAudioPlayer?{
-        if let file = NSData(contentsOfURL: path){
+    func createAVAudioPlayer(_ path: URL, volume: Float) -> AVAudioPlayer?{
+        if let file = try? Data(contentsOf: path){
             do{
                 let newPlayer = try AVAudioPlayer(data: file)
                 newPlayer.volume = volume
@@ -108,10 +108,10 @@ class SoundEngine: NSObject, AVAudioPlayerDelegate , AVAudioRecorderDelegate {
         recordingSession = AVAudioSession.sharedInstance()
         if let session = recordingSession{
             do{
-                try session.setCategory(AVAudioSessionCategoryRecord)
+                try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
                 try session.setActive(true)
                 session.requestRecordPermission(){
-                    [unowned self] (allowed: Bool) -> Void in dispatch_async(dispatch_get_main_queue()){
+                    [unowned self] (allowed: Bool) -> Void in DispatchQueue.main.async{
                         if allowed{
                             //TODO:
                         }else{
@@ -126,18 +126,18 @@ class SoundEngine: NSObject, AVAudioPlayerDelegate , AVAudioRecorderDelegate {
         }
     }
     
-    func startRecord(channelNumber: Int){
+    func startRecord(_ channelNumber: Int){
         if channelNumber == 4 || channelNumber == 5{
         
-            let audioURL = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]).URLByAppendingPathComponent("\(channelsFileInfo[channelNumber][0]).\(channelsFileInfo[channelNumber][1])")
+            let audioURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]).appendingPathComponent("\(channelsFileInfo[channelNumber][0]).\(channelsFileInfo[channelNumber][1])")
             let settings = [
                 AVFormatIDKey: Int(kAudioFormatLinearPCM),
                 AVSampleRateKey: 44100.0,
                 AVNumberOfChannelsKey: 1 as NSNumber,
-                AVEncoderAudioQualityKey: AVAudioQuality.High.rawValue
-            ]
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ] as [String : Any]
             do{
-                audioRecorder = try AVAudioRecorder(URL: audioURL, settings: settings)
+                audioRecorder = try AVAudioRecorder(url: audioURL, settings: settings)
                 audioRecorder.delegate = self
                 audioRecorder.record()
             }catch{
@@ -145,12 +145,12 @@ class SoundEngine: NSObject, AVAudioPlayerDelegate , AVAudioRecorderDelegate {
             }
         }
     }
-    func finishRecording(success success:Bool) {
+    func finishRecording(success:Bool) {
         audioRecorder.stop()
         audioRecorder = nil
         
     }
-    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag{
             finishRecording(success: false)
         }

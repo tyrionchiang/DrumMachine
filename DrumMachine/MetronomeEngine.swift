@@ -12,7 +12,7 @@ class MetronomeEngine: NSObject {
     
     
     var soundEngine: SoundEngine?
-    private var playSoundTimer: NSTimer?
+    fileprivate var playSoundTimer: Timer?
     
     
     var notePointsChannels: [[Bool]] = [
@@ -48,21 +48,21 @@ class MetronomeEngine: NSObject {
         ],
     ]{
         didSet{
-            NSUserDefaults.standardUserDefaults().setObject(notePointsChannels, forKey: "notePointsChannels")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(notePointsChannels, forKey: "notePointsChannels")
+            UserDefaults.standard.synchronize()
         }
     }
     
     
-    private let maxBPMvalue = 250
-    private let minBPNvalue = 30
-    private var _BPMValue = 70
+    fileprivate let maxBPMvalue = 250
+    fileprivate let minBPNvalue = 30
+    fileprivate var _BPMValue = 70
     
     var BPMValue: Int{
         set{
             _BPMValue = min(max(newValue, minBPNvalue),maxBPMvalue)
-            NSUserDefaults.standardUserDefaults().setObject(_BPMValue, forKey: "BPMValue")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.set(_BPMValue, forKey: "BPMValue")
+            UserDefaults.standard.synchronize()
             
             if isPlaying(){
                 stopPlay()
@@ -80,9 +80,9 @@ class MetronomeEngine: NSObject {
         //do something
     
         
-        BPMValue = NSUserDefaults.standardUserDefaults().objectForKey("BPMValue") as? Int ?? _BPMValue
+        BPMValue = UserDefaults.standard.object(forKey: "BPMValue") as? Int ?? _BPMValue
         
-        if let object = NSUserDefaults.standardUserDefaults().objectForKey("notePointsChannels") as? [[Bool]]{
+        if let object = UserDefaults.standard.object(forKey: "notePointsChannels") as? [[Bool]]{
              notePointsChannels = object
         }
         
@@ -98,7 +98,7 @@ class MetronomeEngine: NSObject {
         }else{
             let timeInterval = 60.0 / Double(BPMValue) / 4.0
             
-            playSoundTimer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: #selector(playSound), userInfo: nil, repeats: true)
+            playSoundTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(playSound), userInfo: nil, repeats: true)
         }
     }
     func stopPlay(){
@@ -119,7 +119,7 @@ class MetronomeEngine: NSObject {
         return playSoundTimer != nil
     }
     
-    @objc private func playSound() {
+    @objc fileprivate func playSound() {
         for index in 0...(notePointsChannels.count - 1){
             if let player = soundEngine?.playerChannels[index]{
                 if notePointsChannels[index][counter]{
@@ -130,7 +130,7 @@ class MetronomeEngine: NSObject {
         }
         
         
-        counter++
+        counter += 1
         
         if counter >= notePointsChannels[0].count{
             counter = 0

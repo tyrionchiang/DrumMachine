@@ -19,15 +19,15 @@ class RecordingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        lodingIndicator.hidden = true
+        lodingIndicator.isHidden = true
         lodingIndicator.startAnimating()
         
         soundEngine?.initializeRecorder()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         soundEngine?.reloadSound()
@@ -35,23 +35,23 @@ class RecordingViewController: UIViewController {
     
 
     var isRecording = false
-    @IBAction func recordingButtonHasBeenClicked(sender: UIButton) {
+    @IBAction func recordingButtonHasBeenClicked(_ sender: UIButton) {
         isRecording = !isRecording
         if isRecording{
             //TODO: Start recording
             soundEngine?.startRecord(channelNumber)
             
-            sender.setImage(UIImage(named: "stop"), forState: .Normal)
-            lodingIndicator.hidden = false
+            sender.setImage(UIImage(named: "stop"), for: UIControlState())
+            lodingIndicator.isHidden = false
         }else{
             soundEngine?.finishRecording(success: true)
             
-            sender.setImage(UIImage(named: "play"), forState: .Normal)
-            lodingIndicator.hidden = true
+            sender.setImage(UIImage(named: "play"), for: UIControlState())
+            lodingIndicator.isHidden = true
         }
     }
    
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
